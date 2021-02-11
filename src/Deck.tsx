@@ -124,10 +124,11 @@ export const Deck = ({ data }: { data: Props[] }) => {
 const RenderCards = ({ item }: { item: Props }) => {
   return (
     <Card key={item.id}>
-      <Card.Title>{item.name}</Card.Title>
+      <Card.Title style={styles.titleStyle}>{item.name}</Card.Title>
       <Card.Divider />
       <Card.Image source={item.uri} />
-      <Text style={{ marginBottom: 10 }}>2021年の目標：{item.goal}</Text>
+      <Card.Divider />
+      <Text style={styles.textStyle}>目標：{item.goal}</Text>
       <Button buttonStyle={styles.buttonStyle} title="プロフィールはこちら" />
     </Card>
   );
@@ -136,9 +137,9 @@ const RenderCards = ({ item }: { item: Props }) => {
 const RenderNoMoreCards = () => {
   return (
     <Card>
-      <Card.Title>終了</Card.Title>
+      <Card.Title style={styles.titleStyle}>終了</Card.Title>
       <Card.Divider />
-      <Text style={{ marginBottom: 10 }}>検索にかかった女優は以上です</Text>
+      <Text style={styles.textStyle}>検索にかかった女優は以上です</Text>
       <Button buttonStyle={styles.buttonStyle} title="もっと女優を探す" />
     </Card>
   );
@@ -149,6 +150,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: SCREEN_WIDTH,
   },
+  titleStyle: { fontSize: 18 },
+  textStyle: { marginBottom: 10, fontSize: 16 },
   buttonStyle: {
     borderRadius: 0,
     marginLeft: 0,
