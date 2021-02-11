@@ -32,10 +32,10 @@ export const Deck = ({ data }: { data: Props[] }) => {
   const position = useRef(new Animated.ValueXY()).current;
   const panResponder = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => true, // 押したとき
+      onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
         position.setValue({ x: gesture.dx, y: gesture.dy });
-      }, // 動かしたとき
+      },
       onPanResponderRelease: (event, gesture) => {
         if (gesture.dx > SWIPE_THRESHOLD) {
           forceSwipe('right');
@@ -44,7 +44,7 @@ export const Deck = ({ data }: { data: Props[] }) => {
         } else {
           resetPosition();
         }
-      }, // 指を話したとき
+      },
     })
   ).current;
 
@@ -128,15 +128,7 @@ const RenderCards = ({ item }: { item: Props }) => {
       <Card.Divider />
       <Card.Image source={item.uri} />
       <Text style={{ marginBottom: 10 }}>2021年の目標：{item.goal}</Text>
-      <Button
-        buttonStyle={{
-          borderRadius: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-        }}
-        title="プロフィールはこちら"
-      />
+      <Button buttonStyle={styles.buttonStyle} title="プロフィールはこちら" />
     </Card>
   );
 };
@@ -147,15 +139,7 @@ const RenderNoMoreCards = () => {
       <Card.Title>終了</Card.Title>
       <Card.Divider />
       <Text style={{ marginBottom: 10 }}>検索にかかった女優は以上です</Text>
-      <Button
-        buttonStyle={{
-          borderRadius: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-        }}
-        title="もっと女優を探す"
-      />
+      <Button buttonStyle={styles.buttonStyle} title="もっと女優を探す" />
     </Card>
   );
 };
@@ -164,5 +148,11 @@ const styles = StyleSheet.create({
   cardStyle: {
     position: 'absolute',
     width: SCREEN_WIDTH,
+  },
+  buttonStyle: {
+    borderRadius: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
   },
 });

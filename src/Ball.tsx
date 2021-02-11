@@ -7,6 +7,7 @@ export const Ball = () => {
   useEffect(() => {
     Animated.spring(position, {
       toValue: { x: 200, y: 500 },
+      useNativeDriver: false,
     }).start();
   }, []);
 
